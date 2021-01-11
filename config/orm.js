@@ -15,4 +15,12 @@ const orm = {
             cb(result)
         });
     },
+
+    updateOne: function (tableName, column, condition, value, cb) {
+        const queryString = `UPDATE ${tableName} SET ${column}=${condition} WHERE id=${value};`;
+        connection.query(queryString, function (err, result) {
+            if (err) throw err;
+            cb(result);
+        })
+    }
 }

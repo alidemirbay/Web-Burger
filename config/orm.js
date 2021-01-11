@@ -1,23 +1,23 @@
 const connection = require("../config/connection.js");
 
 const orm = {
-    selectAll: function (tableName, cb) {
-        const queryString = " SELECT * FROM " + tableName + ";";
+    selectAll: function (table, cb) {
+        const queryString = " SELECT * FROM " + table + ";";
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result);
         })
     },
-    insertOne: function (tableName, column, value, cb) {
-        const queryString = `INSERT INTO ${tableName} (${column}) VALUES ("${value}");`
+    insertOne: function (table, col, val, cb) {
+        const queryString = `INSERT INTO ${table} (${col}) VALUES ("${val}");`
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result)
         });
     },
 
-    updateOne: function (tableName, column, condition, value, cb) {
-        const queryString = `UPDATE ${tableName} SET ${column}=${condition} WHERE id=${value};`;
+    updateOne: function (table, col, cond, val, cb) {
+        const queryString = `UPDATE ${table} SET ${col}=${cond} WHERE id=${val};`;
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result);

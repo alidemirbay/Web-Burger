@@ -22,6 +22,13 @@ const orm = {
             if (err) throw err;
             cb(result);
         })
-    }
+    },
+    deleteOne: function (table, cond, cb) {
+        const queryString = `DELETE FROM ${table} WHERE ${cond};`;
+        connection.query(queryString, function (err, result) {
+            if (err) throw err;
+            cb(result);
+        })
+    },
 }
 module.exports = orm;

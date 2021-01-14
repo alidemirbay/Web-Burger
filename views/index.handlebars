@@ -3,9 +3,6 @@
 <br>
 <div class="container">
 
-
-
-
     <h3 class="card-title text-center">Add A Burger</h3>
     <form class="create-form text-center">
         <div class="form-group">
@@ -20,9 +17,16 @@
             <ol>
                 {{#each burgers}}
                 {{#unless devoured}}
-                {{> burgers/burger-block devoured=true}}
+                <li>
+                    <button class=" change-status btn btn-warning" data-id="{{id}}" data-devoured="{{devoured}}">
+                        Devour it!
+                    </button>
+                    <span>{{burger_name}}</span>
+                </li>
                 {{/unless}}
                 {{/each}}
+
+
             </ol>
         </div>
 
@@ -32,9 +36,15 @@
             <ol>
                 {{#each burgers}}
                 {{#if devoured}}
-                {{> burgers/burger-block devoured=false}}
+                <li>
+                    <button class="remove-burger btn btn-warning" data-id="{{id}}">
+                        Remove it!
+                    </button>
+                    <span>{{burger_name}}</span>
+                </li>
                 {{/if}}
                 {{/each}}
+
             </ol>
         </div>
     </div>
